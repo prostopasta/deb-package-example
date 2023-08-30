@@ -1,0 +1,12 @@
+[Unit]
+Description=Simple Network Server with TCP Listener
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/devops/program.conf
+ExecStart=/usr/bin/program
+
+[Install]
+WantedBy=multi-user.target
