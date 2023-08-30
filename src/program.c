@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 
@@ -23,7 +24,7 @@ int main () {
     struct sockaddr_in server = {
         .sin_family      = AF_INET,
         .sin_port        = htons(port_number),
-        .sin_addr.s_addr = htonl(INADDR_ANY),
+        .sin_addr.s_addr = htonl(INADDR_LOOPBACK),
     };
 
     // bind to address and start listener
@@ -45,14 +46,14 @@ int main () {
         int client_fd = accept(server_fd, (struct sockaddr *) &client, &client_len);
         if (client_fd < 0) printf("Could not establish new connection\n");
 
-        while (1) {
-            // receive data from client
-            ssize_t read_err = recv(client_fd, buf, BUFFER_SIZE, 0);
-            if (read_err < 0) printf("Client read failed\n");
+        // receive data from client
+        ssize_t read_err = recv(client_fd, buf, BUFFER_SIZE, 0);
+        if (read_err < 0) printf("Client read failed\n");
 
-            // send data back
-            ssize_t send_err = send(client_fd, buf, read_err, 0);
-            if (send_err < 0) printf("Client write failed\n");
-        }
+        // send data back
+        ssize_t send_err = send(client_fd, buf, read_err, 0);
+        if (send_err < 0) printf("Client write failed\n");
+
+        close(client_fd);
     }
 }
