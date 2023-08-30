@@ -12,8 +12,9 @@ build: compile dpkg-deb
 
 .PHONY: compile
 compile:
+	@mkdir -p pkg/usr/bin/
 	@gcc -o pkg/usr/bin/program src/program.c
 
 .PHONY: dpkg-deb
 dpkg-deb:
-	@dpkg-deb --build pkg
+	@dpkg-deb --build package
