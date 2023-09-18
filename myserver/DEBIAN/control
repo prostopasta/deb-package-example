@@ -1,0 +1,8 @@
+Package: myserver
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: all
+Depends: libc6 (>= 2.7)
+Maintainer: Pavel Statsenko <std-ext-001-005@practicum.yandex.ru>
+Description: My simple server program example

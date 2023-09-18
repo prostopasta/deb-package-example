@@ -5,8 +5,8 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-EnvironmentFile=/etc/devops/program.conf
-ExecStart=/usr/bin/program
+EnvironmentFile=/etc/devops/myserver.conf
+ExecStart=/usr/bin/myserver
 
 [Install]
 WantedBy=multi-user.target

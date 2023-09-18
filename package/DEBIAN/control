@@ -1,8 +1,0 @@
-Package: program
-Version: 1.0
-Section: base
-Priority: optional
-Architecture: amd64
-Depends: libc6 (>= 2.7)
-Maintainer: Your Name <devops@practicum.yandex.ru>
-Description: Simple program example

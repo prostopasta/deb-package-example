@@ -12,9 +12,9 @@ build: compile dpkg-deb
 
 .PHONY: compile
 compile:
-	@mkdir -p package/usr/bin/
-	@gcc -o package/usr/bin/program src/program.c
+	@mkdir -p myserver/usr/bin/
+	@gcc -o myserver/usr/bin/myserver src/myserver.c
 
 .PHONY: dpkg-deb
 dpkg-deb:
-	@dpkg-deb --build package
+	@dpkg-deb --build myserver
